@@ -23,7 +23,7 @@ docker pull "$APP_IMAGE_WITH_TAG" || { echo "Failed to pull image $APP_IMAGE_WIT
 
 echo "Bringing up services with Docker Compose using image $APP_IMAGE_WITH_TAG ..."
 
-APP_IMAGE_FOR_COMPOSE="$APP_IMAGE_WITH_TAG" docker compose -f "$COMPOSE_FILE_PATH" up -d --force-recreate --remove-orphans || { echo "Docker Compose failed"; exit 1; }
+APP_IMAGE="$APP_IMAGE_WITH_TAG" docker compose -f "$COMPOSE_FILE_PATH" up -d --force-recreate --remove-orphans || { echo "Docker Compose failed"; exit 1; }
 
 echo "Cleaning up old Docker images..."
 docker image prune -f
